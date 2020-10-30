@@ -1,10 +1,14 @@
 # include .env variables
-ifneq (,$(wildcard ./.env))
-	include .env
-	export
-endif
+include .env
+export
 
 all: build
+
+env:
+	echo $(PYPI_USERNAME)
+	echo $(PYPI_TEST_PASSWORD)
+	echo $(PYPI_PASSWORD)
+.PHONY: env
 
 build: clean
 	python3 setup.py sdist bdist_wheel
@@ -18,8 +22,12 @@ develop: clean build
 	pip install dist/*
 .PHONY: develop
 
+publish_test: clean build
+	python3 -m twine upload --repository testpypi dist/* --username=$(PYPI_USERNAME) --password=$(PYPI_TEST_PASSWORD)
+.PHONY: publish_test
+
 publish: clean build
-	python3 -m twine upload --repository testpypi dist/* --username=$(TWINE_USERNAME) --password=$(TWINE_PASSWORD)
+	python3 -m twine upload dist/* --username=$(PYPI_USERNAME) --password=$(PYPI_PASSWORD)
 .PHONY: publish
 
 version:

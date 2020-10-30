@@ -22,5 +22,13 @@ setup(
     install_requires=[
         "requests"
     ],
+    extras_require={
+        "dev": [
+            "setuptools",
+            "twine",
+            "wheel",
+            "python-dotenv"
+        ]
+    },
     python_requires='>=3.6',
 )
