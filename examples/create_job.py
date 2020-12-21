@@ -2,7 +2,7 @@ import os
 import sys
 
 from dotenv import load_dotenv
-from build.lib.mitto_sdk import Mitto
+from mitto_sdk import Mitto
 
 load_dotenv()
 

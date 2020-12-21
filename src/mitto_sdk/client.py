@@ -86,6 +86,7 @@ class Mitto:
         Update an existing Mitto job.
         """
         assert isinstance(job_conf, dict)
+        assert isinstance(job_id, int)
 
         uri = f"/job/{job_id}/conf"
         url = f"{self.base_url}{self.api_root}{uri}"
