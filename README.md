@@ -13,7 +13,9 @@ pip install python-mitto-sdk
 ## Usage:
 ```python
 # What's my Mitto version?
-BASE_URL = ""
+from mitto_sdk import Mitto
+
+BASE_URL = "https://{mitto_url}"
 API_KEY = ""
 
 mitto = Mitto(
