@@ -1,0 +1,16 @@
+{
+    "name": "{{job_name}}",
+    "title": "{{job_title}}",
+    "type": "sql",
+    "conf": {
+        "dbo": "postgresql://localhost/analytics",
+        "kwargs": {},
+        "parameters": {},
+        "split": false,
+        "sql": "{{sql}}",
+        "transaction": true
+    },
+    "tags": [
+        "sql"
+    ]
+}
