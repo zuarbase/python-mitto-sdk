@@ -58,6 +58,16 @@ class Mitto:
         for result in results:
             yield from result["jobs"]
 
+    def get_job(self, job_id):
+        """
+        Get job from Mitto API. Pass in a valid job id.
+        """
+        uri = f"/v2/jobs/{job_id}"
+        url = f"{self.base_url}{self.api_root}{uri}"
+
+        results = self.session.get(url)
+        return results.json()
+
     def get_about(self):
         """
         Get system information from Mitto API.
@@ -94,4 +104,3 @@ class Mitto:
         results = self.session.post(url=url, json=job_conf, **kwargs)
         results.raise_for_status()
         return results.json()
-
