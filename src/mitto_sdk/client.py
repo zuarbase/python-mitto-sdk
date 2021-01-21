@@ -132,3 +132,15 @@ class Mitto:
         results = self.session.post(url=url, json=job_schedule, **kwargs)
         results.raise_for_status()
         return results.json()
+
+    def create_job_webhook(self, job_id=None, job_hook=None, **kwargs):
+        """ 
+        Add a web hook to a job.
+        """
+        assert isinstance(job_id, int)
+        assert isinstance(job_hook, dict)
+        uri = f"/v2/jobs/{job_id}/webhooks"
+        url = f"{self.base_url}{self.api_root}{uri}"
+        results = self.session.post(url=url, json=job_hook, **kwargs)
+        results.raise_for_status()
+        return results.json()
