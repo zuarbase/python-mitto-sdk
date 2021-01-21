@@ -104,3 +104,31 @@ class Mitto:
         results = self.session.post(url=url, json=job_conf, **kwargs)
         results.raise_for_status()
         return results.json()
+
+    def get_job_schedule(self, job_id=None, **kwargs):
+        """
+        Get a job's schedule. Pass in a valid job id.
+        """
+
+        assert isinstance(job_id, int)
+
+        uri = f"/job/{job_id}/schedule"
+        url = f"{self.base_url}{self.api_root}{uri}"
+
+        results = self.session.get(url=url, **kwargs)
+        results.raise_for_status()
+        return results.json()
+
+    def update_job_schedule(self, job_id=None, job_schedule=None, **kwargs):
+        """
+        Update a job's schedule. Pass in a valid id and schedule.
+        """
+        assert isinstance(job_id, int)
+        assert isinstance(job_schedule, dict)
+
+        uri = f"/job/{job_id}/schedule"
+        url = f"{self.base_url}{self.api_root}{uri}"
+
+        results = self.session.post(url=url, json=job_schedule, **kwargs)
+        results.raise_for_status()
+        return results.json()
