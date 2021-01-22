@@ -12,11 +12,11 @@ API_KEY = os.getenv("MITTO_API_KEY")
 JOB_ID = 26439
 
 SCHEDULE = {
-    'value': 'continuous',
-    'type': 'continuous',
-    'daily': None,
-    'hourly': None,
-    'custom': None
+    "value": "continuous",
+    "type": "continuous",
+    "daily": None,
+    "hourly": None,
+    "custom": None
 }
 
 
