@@ -2,6 +2,7 @@ import requests
 
 from src.mitto_sdk import Mitto
 
+
 def test_init(mocker):
     mocker.patch.object(requests, 'Session', autospec=True)
     mitto = Mitto(

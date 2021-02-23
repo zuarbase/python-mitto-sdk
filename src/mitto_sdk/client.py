@@ -1,3 +1,5 @@
+"""Connect to mitto API and call endpoints"""
+
 import requests
 
 
@@ -40,7 +42,14 @@ class Mitto:
                 params["offset"] = offset + params["limit"]
             yield data
 
-    def get_jobs(self, search=None, tag=None, job_type=None, status=None, **kwargs):
+    def get_jobs(
+        self,
+        search=None,
+        tag=None,
+        job_type=None,
+        status=None,
+        **kwargs
+    ):
         """
         Get jobs from Mitto API. Filter using search, tag, type, and/or status.
         """
@@ -84,7 +93,7 @@ class Mitto:
         """
         assert isinstance(job, dict)
 
-        uri = f"/v2/jobs"
+        uri = "/v2/jobs"
         url = f"{self.base_url}{self.api_root}{uri}"
 
         results = self.session.post(url=url, json=job, **kwargs)
@@ -134,7 +143,7 @@ class Mitto:
         return results.json()
 
     def create_job_webhook(self, job_id=None, job_hook=None, **kwargs):
-        """ 
+        """
         Add a web hook to a job. Pass in a valid job id and webhook.
         """
         assert isinstance(job_id, int)
