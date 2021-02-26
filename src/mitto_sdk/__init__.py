@@ -1,1 +1,3 @@
-from .client import Mitto
+"""Mitto SDK init"""
+
+from .client import Mitto  # noqa: F401
