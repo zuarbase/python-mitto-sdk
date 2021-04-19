@@ -11,7 +11,7 @@ env:
 	echo $(PYPI_PASSWORD)
 .PHONY: env
 
-build: flake8 pylint clean
+build: pyenv flake8 pylint test coverage clean
 	python3 setup.py sdist bdist_wheel
 .PHONY: build
 

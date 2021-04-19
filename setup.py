@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="python-mitto-sdk",
-    version="0.0.6",
+    version="0.0.7",
     author="Justin Freels",
     author_email="justin@zuar.com",
     description="Python library to interact with Mitto's API.",
