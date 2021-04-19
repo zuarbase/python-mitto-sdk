@@ -77,6 +77,25 @@ class Mitto:
         results = self.session.get(url)
         return results.json()
 
+    def job_action(self, job_id, action):
+        """
+        Run action on job
+        """
+        uri = "/v2/jobs"
+        url = f"{self.base_url}{self.api_root}{uri}/{job_id}/:actions"
+        post_data = {
+            "action": action.upper()
+        }
+        results = self.session.post(url=url, json=post_data)
+        results.raise_for_status()
+        return results.json()
+
+    def start_job(self, job_id):
+        """
+        Start a job
+        """
+        return self.job_action(job_id, "start")
+
     def get_about(self):
         """
         Get system information from Mitto API.

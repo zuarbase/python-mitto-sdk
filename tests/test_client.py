@@ -167,6 +167,30 @@ def test_create_job(mocker):
     assert mitto.create_job(job=job) == GET_JOB_RESPONSE
 
 
+ACTION_RESPONSE = Dict()
+ACTION_RESPONSE.id = 68848
+ACTION_RESPONSE.returncode = None
+ACTION_RESPONSE.started_at = "2021-04-19T18:35:10.550109+00:00"
+
+
+def test_job_action(mocker):
+    def _request_post(*args, params=None, **kwargs):
+        return Dict({
+            "status_code": 200,
+            "json": lambda: ACTION_RESPONSE,
+            "raise_for_status": lambda: None
+        })
+    mocker.patch("requests.Session.post", new=_request_post)
+    mitto = Mitto(
+        base_url="https://fake.zuarbase.net",
+        api_key="FAKE_API_KEY"
+    )
+    action = "start"
+    job_id = 65
+    assert mitto.job_action(job_id, action) == ACTION_RESPONSE
+    assert mitto.start_job(65) == ACTION_RESPONSE
+
+
 WEBHOOK_RESPONSE = Dict()
 WEBHOOK_RESPONSE.url = "https://webhook.site/83d6607a-0118-478d-a68c-cf2ab4645314"  # noqa: E501
 WEBHOOK_RESPONSE.method = "POST"
