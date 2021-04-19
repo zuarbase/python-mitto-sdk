@@ -1,7 +1,8 @@
 # Example usage of the [Mitto](https://www.zuar.com/products/mitto) Python SDK  
   
 ```
-├── create_job.py # create a new job
+├── create_cmd_job.py # create a new cmd job
+├── create_job.py # create a new sql job
 ├── create_job_webhook.py # add a webhook to a job
 ├── create_jobs_from_template # create jobs using jinja templates
 │   ├── create_jobs_from_template.py
