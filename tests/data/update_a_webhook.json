@@ -1,0 +1,11 @@
+{
+    "url": "https://oldhook.com",
+    "method": "POST",
+    "event_type": "JOB_COMPLETE",
+    "content_type": "application/json",
+    "body": "{ \"text\": \"hello world\" }",
+    "enabled": true,
+    "id": 2,
+    "created_at": "2021-07-26T15:15:01.136837+00:00",
+    "updated_at": "2021-07-26T15:15:01.136818+00:00"
+}

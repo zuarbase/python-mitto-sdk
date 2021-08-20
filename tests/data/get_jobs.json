@@ -1,0 +1,83 @@
+{
+  "jobs": [
+    {
+      "id": 153,
+      "name": "plugin_generic_job__system_job",
+      "title": "system job",
+      "type": "system",
+      "markdown": null,
+      "schedule": {
+        "type": "custom",
+        "daily": null,
+        "hourly": null,
+        "endof": null,
+        "custom": "*/5 * * * *",
+        "value": "*/5 * * * *"
+      },
+      "timeout": null,
+      "notify": 0,
+      "delay": null,
+      "continue_on_error": false,
+      "concurrency": null,
+      "created_at": "2021-07-29T09:04:46.495506+00:00",
+      "updated_at": "2021-07-29T16:36:12.005903+00:00",
+      "status": {
+        "id": 2141,
+        "pid": 32585,
+        "returncode": 0,
+        "updates": 0,
+        "count": 0,
+        "error": "",
+        "started_at": "2021-08-05T16:50:02.234285+00:00",
+        "completed_at": "2021-08-05T16:50:03.601579+00:00",
+        "kvp": {
+          "cron status": "Active",
+          "auth status": "Active",
+          "scheduler status": "Active",
+          "uwsgi status": "Active",
+          "gunicorn status": "Active",
+          "waf status": "Active",
+          "current disk usage": "5.0%",
+          "max disk": "90%",
+          "current memory usage": "38.4%",
+          "max memory": "90%"
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": 161,
+      "name": "sql_b9c94442_ca1b_4724_9ed8_d743c1dd74f5",
+      "title": "[SQL]b9c94442-ca1b-4724-9ed8-d743c1dd74f5",
+      "type": "sql",
+      "markdown": null,
+      "schedule": {
+        "type": "daily",
+        "daily": {
+          "minute": 0,
+          "hour": 12,
+          "ampm": "AM"
+        },
+        "hourly": null,
+        "endof": null,
+        "custom": null,
+        "value": "0 0 * * *"
+      },
+      "timeout": null,
+      "notify": 0,
+      "delay": null,
+      "continue_on_error": null,
+      "concurrency": null,
+      "created_at": "2021-08-05T16:05:42.695301+00:00",
+      "updated_at": "2021-08-05T16:05:42.693929+00:00",
+      "status": null,
+      "tags": []
+    }
+  ],
+  "pagination": {
+    "count": 2,
+    "limit": 2,
+    "more_pages": false,
+    "offset": 0
+  }
+}

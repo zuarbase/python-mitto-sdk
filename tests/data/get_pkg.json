@@ -1,0 +1,23 @@
+{
+  "packages": [
+    {
+      "name": "mitto",
+      "available": "2.9.4",
+      "description": "Data staging platform",
+      "installed": "2.9.4"
+    },
+    {
+      "name": "mitto-plugin-googlesheets",
+      "available": "2021.6.10",
+      "description": "GoogleSheets plugin for Mitto",
+      "installed": "2021.6.10"
+    },
+    {
+      "name": "mitto-plugin-rclone",
+      "available": "2020.9.10-1-gb2e7771",
+      "description": "Rclone Plugin",
+      "installed": "2020.9.10-1-gb2e7771"
+    }
+  ],
+  "timestamp": "2021-07-26T13:31:22.636093"
+}

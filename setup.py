@@ -1,4 +1,14 @@
+from pip.req import parse_requirements
 from setuptools import setup, find_packages
+
+# parse_requirements() returns generator of pip.req.InstallRequirement objects
+install_reqs = parse_requirements('requirements.txt')
+install_reqs_dev = parse_requirements('requirements_dev.txt')
+
+# reqs is a list of requirements.txt
+# reqs_dev is a list of requirements_dev.txt
+reqs = install_reqs
+reqs_dev = install_reqs_dev
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
@@ -20,7 +30,8 @@ setup(
         "Operating System :: OS Independent",
     ],
     install_requires=[
-        "requests"
+        reqs,
+        reqs_dev
     ],
     extras_require={
         "dev": [

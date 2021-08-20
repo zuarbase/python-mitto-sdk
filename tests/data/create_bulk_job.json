@@ -1,0 +1,43 @@
+[
+  {
+    "name": "string",
+    "title": "string",
+    "type": "string",
+    "markdown": "string",
+    "schedule": {
+      "type": "daily",
+      "daily": {
+        "minute": 59,
+        "hour": 12,
+        "ampm": "AM"
+      },
+      "hourly": {
+        "minute": 59
+      },
+      "endof": "month",
+      "custom": "string"
+    },
+    "timeout": 0,
+    "notify": 0,
+    "delay": 0,
+    "continue_on_error": true,
+    "concurrency": 0,
+    "conf": "string",
+    "tags": [
+      "string"
+    ],
+    "jobs": [
+      {
+        "id": 0,
+        "enabled": true
+      }
+    ],
+    "input": {},
+    "output": {},
+    "sdl": {},
+    "steps": [
+      "string"
+    ],
+    "store": {}
+  }
+]
