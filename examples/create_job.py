@@ -43,7 +43,7 @@ JOB = {
 }
 
 
-def main(JOB):
+def main(job=JOB):
     """
     Request to API with current configurations.
     """
@@ -51,9 +51,9 @@ def main(JOB):
         base_url=BASE_URL,
         api_key=API_KEY
     )
-    created_job = mitto.create_job(job=JOB)
+    created_job = mitto.create_job(job=job)
     return created_job
 
 
 if __name__ == "__main__":
-    sys.exit(main(JOB))
+    sys.exit(main(job=JOB))

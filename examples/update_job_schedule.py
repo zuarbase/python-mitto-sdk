@@ -58,18 +58,18 @@ SCHEDULE = {
 }
 
 
-def main(BASE_URL, API_KEY, SCHEDULE):
+def main(base_url=BASE_URL, api_key=API_KEY, schedule=SCHEDULE, job=JOB):
     """updating job`s schedule"""
     mitto = Mitto(
         base_url=BASE_URL,
         api_key=API_KEY
     )
-    get_sch = get_schedule(JOB=JOB)
+    get_sch = get_schedule(job=job)
     sch_id = get_sch["id"]
-    get_sch['schedule'] = SCHEDULE
+    get_sch['schedule'] = schedule
     post_schedule = mitto.update_job_schedule(job_id=sch_id, job_schedule=get_sch)  # noqa: E501
     return post_schedule
 
 
 if __name__ == "__main__":
-    sys.exit(main(BASE_URL, API_KEY, SCHEDULE))
+    sys.exit(main(base_url=BASE_URL, api_key=API_KEY, schedule=SCHEDULE, job=JOB))  # noqa: E501

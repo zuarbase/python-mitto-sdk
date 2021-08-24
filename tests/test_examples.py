@@ -65,144 +65,145 @@ def _request_delete():
 def test_create_bulk_job(mocker, test_bulk_job_fixture):
     """test create_job.py"""
     mocker.patch("requests.Session.post", new=mock_response(test_bulk_job_fixture))  # noqa: E501
-    assert create_bulk_job.main(BULK_JOB=test_bulk_job_fixture) == test_bulk_job_fixture  # noqa: E501
+    assert create_bulk_job.main(bulk_job_s=test_bulk_job_fixture) == test_bulk_job_fixture  # noqa: E501
 
 
 def test_create_credentials(mocker, test_credentials_fixture):
     """testing create_credentials.py"""
     mocker.patch("requests.Session.post", new=mock_response(test_credentials_fixture))  # noqa: E501
-    assert create_credentials.main(NEW_CREDS=test_credentials_fixture) == test_credentials_fixture  # noqa: E501
+    assert create_credentials.main(new_creds=test_credentials_fixture) == test_credentials_fixture  # noqa: E501
 
 
 def test_create_job(mocker, test_io_job_fixture):
     """testing create_job.py"""
     mocker.patch("requests.Session.post", new=mock_response(test_io_job_fixture))  # noqa: E501
-    assert create_job.main(JOB=test_io_job_fixture) == test_io_job_fixture  # noqa: E501
+    assert create_job.main(job=test_io_job_fixture) == test_io_job_fixture  # noqa: E501
 
 
 def test_create_cmd_job(mocker, test_cmd_job_fixture):
     """testing create_cmd_job.py"""
     mocker.patch("requests.Session.post", new=mock_response(test_cmd_job_fixture))  # noqa: E501
-    assert create_cmd_job.main(JOB=test_cmd_job_fixture) == test_cmd_job_fixture  # noqa: E501
+    assert create_cmd_job.main(job=test_cmd_job_fixture) == test_cmd_job_fixture  # noqa: E501
 
 
-def test_create_job_webhook(mocker, test_create_job_webhook_fixture):
+def test_create_job_webhook(mocker, test_create_job_webhook_fixture, test_io_job_fixture):  # noqa: E501
     """testing create_job_webhook.py"""
+    mocker.patch("requests.Session.post", new=mock_response(test_io_job_fixture))  # noqa: E501
     mocker.patch("requests.Session.post", new=mock_response(test_create_job_webhook_fixture))  # noqa: E501
-    assert create_job_webhook.main(WEBHOOK=test_create_job_webhook_fixture) == test_create_job_webhook_fixture  # noqa: E501
+    assert create_job_webhook.main(webhook=test_create_job_webhook_fixture) == test_create_job_webhook_fixture  # noqa: E501
 
 
 def test_create_sql_job(mocker, test_sql_job_fixture):
     """testing create_sql_job.py"""
     mocker.patch("requests.Session.post", new=mock_response(test_sql_job_fixture))  # noqa: E501
-    assert create_sql_job.main(SQL_JOB=test_sql_job_fixture) == test_sql_job_fixture  # noqa: E501
+    assert create_sql_job.main(sql_job=test_sql_job_fixture) == test_sql_job_fixture  # noqa: E501
 
 
 def test_create_tag(mocker, test_tag_fixture):
     """testing create_tag.py"""
     mocker.patch("requests.Session.post", new=mock_response(test_tag_fixture))
-    assert create_tag.main(TAG=test_tag_fixture) == test_tag_fixture  # noqa: E501
+    assert create_tag.main(tag=test_tag_fixture) == test_tag_fixture  # noqa: E501
 
 
 def test_get_about_messages(mocker, test_get_about_messages_fixture):
     """testing get_about_messages.py"""
     mocker.patch("requests.Session.get", new=mock_response(test_get_about_messages_fixture))  # noqa: E501
-    assert get_about_messages.main(BASE_URL=BASE_URL, API_KEY=API_KEY) == test_get_about_messages_fixture  # noqa: E501
+    assert get_about_messages.main(base_url=BASE_URL, api_key=API_KEY) == test_get_about_messages_fixture  # noqa: E501
 
 
 def test_get_about(mocker, test_get_about_fixture):
     """testing get_about.py"""
     mocker.patch("requests.Session.get", new=mock_response(test_get_about_fixture))  # noqa: E501
-    assert get_about.main(BASE_URL=BASE_URL, API_KEY=API_KEY) == test_get_about_fixture  # noqa: E501
-    assert get_about.main(BASE_URL=BASE_URL, API_KEY=API_KEY)["system"]["fqdn"] == "aziz-mitto.zuarbase.net"  # noqa: E501
+    assert get_about.main(base_url=BASE_URL, api_key=API_KEY) == test_get_about_fixture  # noqa: E501
+    assert get_about.main(base_url=BASE_URL, api_key=API_KEY)["system"]["fqdn"] == "aziz-mitto.zuarbase.net"  # noqa: E501
 
 
 def test_get_single_job(mocker, test_get_single_job_fixture, test_io_job_fixture):  # noqa: E501
     """testing get_single_job.py"""
     mocker.patch("requests.Session.post", new=mock_response(test_io_job_fixture))  # noqa: E501
     mocker.patch("requests.Session.get", new=mock_response(test_get_single_job_fixture))  # noqa: E501
-    assert get_single_job.main(BASE_URL=BASE_URL, API_KEY=API_KEY) == test_get_single_job_fixture  # noqa: E501
+    assert get_single_job.main(base_url=BASE_URL, api_key=API_KEY) == test_get_single_job_fixture  # noqa: E501
 
 
 def test_get_conf_info(mocker, test_get_conf_info_fixture):
     """testing get_about.py"""
     mocker.patch("requests.Session.get", new=mock_response(test_get_conf_info_fixture))  # noqa: E501
-    assert get_conf_info.main(BASE_URL=BASE_URL, API_KEY=API_KEY) == test_get_conf_info_fixture["conf"]  # noqa: E501
+    assert get_conf_info.main(base_url=BASE_URL, api_key=API_KEY) == test_get_conf_info_fixture["conf"]  # noqa: E501
 
 
 def test_get_credentials(mocker, test_get_credentials_fixture):
     """testing get_credentials.py"""
     mocker.patch("requests.Session.get", new=mock_response(test_get_credentials_fixture))  # noqa: E501
-    assert get_credentials.main(BASE_URL=BASE_URL, API_KEY=API_KEY) == test_get_credentials_fixture  # noqa: E501
+    assert get_credentials.main(base_url=BASE_URL, api_key=API_KEY) == test_get_credentials_fixture  # noqa: E501
 
 
 def test_get_databases(mocker, test_get_databases_fixture):
     """testing get_databases.py"""
     mocker.patch("requests.Session.get", new=mock_response(test_get_databases_fixture))  # noqa: E501
-    assert get_databases.main(BASE_URL=BASE_URL, API_KEY=API_KEY) == test_get_databases_fixture  # noqa: E501
+    assert get_databases.main(base_url=BASE_URL, api_key=API_KEY) == test_get_databases_fixture  # noqa: E501
 
 
 def test_get_job_by_name(mocker, test_get_job_by_name_fixture):
     """testing get_job_by_name.py"""
     mocker.patch("requests.Session.get", new=mock_response(test_get_job_by_name_fixture))  # noqa: E501
-    assert get_job_by_name.main(BASE_URL=BASE_URL, API_KEY=API_KEY) == test_get_job_by_name_fixture  # noqa: E501
+    assert get_job_by_name.main(base_url=BASE_URL, api_key=API_KEY) == test_get_job_by_name_fixture  # noqa: E501
 
 
 def test_get_job_schedule(mocker, test_get_job_schedule_fixture):
     """testing get_job_schedule.py"""
     mocker.patch("requests.Session.get", new=mock_response(test_get_job_schedule_fixture))  # noqa: E501
-    assert get_job_schedule.main(BASE_URL=BASE_URL, API_KEY=API_KEY) == test_get_job_schedule_fixture["schedule"]  # noqa: E501
+    assert get_job_schedule.main(base_url=BASE_URL, api_key=API_KEY) == test_get_job_schedule_fixture["schedule"]  # noqa: E501
 
 
 def test_search_jobs(mocker, test_get_jobs_fixture):
     """testing get_jobs.py"""
     mocker.patch("requests.Session.post", new=mock_response(test_get_jobs_fixture))  # noqa: E501
-    assert list(get_jobs.main(BASE_URL=BASE_URL, API_KEY=API_KEY)) == test_get_jobs_fixture["jobs"]  # noqa: E501
+    assert list(get_jobs.main(base_url=BASE_URL, api_key=API_KEY)) == test_get_jobs_fixture["jobs"]  # noqa: E501
 
 
 def test_get_metrics(mocker, test_get_metrics_fixture):
     """testing get_metrics.py"""
     mocker.patch("requests.Session.get", new=mock_response(test_get_metrics_fixture))  # noqa: E501
-    metrics = get_metrics.main(BASE_URL=BASE_URL, API_KEY=API_KEY)
+    metrics = get_metrics.main(base_url=BASE_URL, api_key=API_KEY)
     assert metrics == test_get_metrics_fixture
 
 
 def test_get_pkg(mocker, test_get_pkg_fixture):
     """testing get_pkg.py"""
     mocker.patch("requests.Session.get", new=mock_response(test_get_pkg_fixture))  # noqa; E501
-    assert get_pkg.main(BASE_URL=BASE_URL, API_KEY=API_KEY) == test_get_pkg_fixture  # noqa: E501
+    assert get_pkg.main(base_url=BASE_URL, api_key=API_KEY) == test_get_pkg_fixture  # noqa: E501
 
 
 def test_get_single_job_webhook_conf_info(mocker, test_get_single_job_webhook_conf_info_fixture):  # noqa: E501
     """testing get_single_job_webhook_conf_info.py"""
     mocker.patch("requests.Session.get", new=mock_response(test_get_single_job_webhook_conf_info_fixture))  # noqa:
-    assert get_single_job_webhook_conf_info.main(BASE_URL=BASE_URL, API_KEY=API_KEY) == test_get_single_job_webhook_conf_info_fixture  # noqa: E501
+    assert get_single_job_webhook_conf_info.main(base_url=BASE_URL, api_key=API_KEY) == test_get_single_job_webhook_conf_info_fixture  # noqa: E501
 
 
 def test_get_tags(mocker, test_get_tags_fixture):
     """testing get_tags.py"""
     mocker.patch("requests.Session.get", new=mock_response(test_get_tags_fixture))  # noqa: E501
-    assert get_tags.main(BASE_URL=BASE_URL, API_KEY=API_KEY) == test_get_tags_fixture  # noqa: E501
+    assert get_tags.main(base_url=BASE_URL, api_key=API_KEY) == test_get_tags_fixture  # noqa: E501
 
 
 def test_get_webhooks(mocker, test_get_webhooks_fixture, test_io_job_fixture):
     """testing get_webhooks.py"""
     mocker.patch("requests.Session.post", new=mock_response(test_io_job_fixture))  # noqa: E501
     mocker.patch("requests.Session.get", new=mock_response(test_get_webhooks_fixture))  # noqa: E501
-    assert get_webhooks.main(BASE_URL=BASE_URL, API_KEY=API_KEY) == test_get_webhooks_fixture  # noqa: E501
+    assert get_webhooks.main(base_url=BASE_URL, api_key=API_KEY) == test_get_webhooks_fixture  # noqa: E501
 
 
 def test_start_job(mocker, test_start_job_fixture):
     """testing start_job.py"""
     mocker.patch("requests.Session.post", new=mock_response(test_start_job_fixture))  # noqa: E501
-    assert start_job.main(BASE_URL=BASE_URL, API_KEY=API_KEY) == test_start_job_fixture  # noqa: E501
+    assert start_job.main(base_url=BASE_URL, api_key=API_KEY) == test_start_job_fixture  # noqa: E501
 
 
 def test_get_single_job_status(mocker, test_get_single_job_status_fixture, test_io_job_fixture):  # noqa: E501
     """testing get_single_job.py"""
     mocker.patch("requests.Session.post", new=mock_response(test_io_job_fixture))  # noqa: E501
     mocker.patch("requests.Session.get", new=mock_response(test_get_single_job_status_fixture))  # noqa: E501
-    assert get_single_job_status.main(BASE_URL=BASE_URL, API_KEY=API_KEY) == test_get_single_job_status_fixture  # noqa: E501
+    assert get_single_job_status.main(base_url=BASE_URL, api_key=API_KEY) == test_get_single_job_status_fixture  # noqa: E501
 
 
 def test_update_job_credentials(mocker, test_update_job_credentials_fixture, test_io_job_fixture, test_get_jobs_fixture):  # noqa: E501
@@ -212,9 +213,9 @@ def test_update_job_credentials(mocker, test_update_job_credentials_fixture, tes
     mocker.patch("requests.Session.patch", new=mock_response(test_update_job_credentials_fixture))  # noqa: E501
     input_creds = "Fakeforse - fake.fake@zuar.com"
     assert update_job_credentials.main(
-        BASE_URL=BASE_URL,
-        API_KEY=API_KEY,
-        INPUT_CREDS=input_creds
+        base_url=BASE_URL,
+        api_key=API_KEY,
+        input_creds=input_creds
     ) == test_update_job_credentials_fixture
 
 
@@ -249,7 +250,7 @@ def test_update_job(mocker, test_update_job_fixture):
             "string"
         ]
     }
-    assert update_job.main(BASE_URL=BASE_URL, API_KEY=API_KEY, UPDATE_JOB=updated_job) == test_update_job_fixture  # noqa: E501
+    assert update_job.main(base_url=BASE_URL, api_key=API_KEY, update_job=updated_job) == test_update_job_fixture  # noqa: E501
 
 
 def test_update_job_schedule(mocker, test_update_job_schedule_fixture):
@@ -269,16 +270,16 @@ def test_update_job_schedule(mocker, test_update_job_schedule_fixture):
     }
 
     assert update_job_schedule.main(
-        BASE_URL=BASE_URL,
-        API_KEY=BASE_URL,
-        SCHEDULE=schedule
+        base_url=BASE_URL,
+        api_key=API_KEY,
+        schedule=schedule
     ) == test_update_job_schedule_fixture
 
 
 def test_update_pkg(mocker, test_update_pkg_fixture):
     """testing update_pkg.py"""
     mocker.patch("requests.Session.post", new=mock_response(test_update_pkg_fixture))  # noqa: E501
-    assert update_pkg.main(BASE_URL=BASE_URL, API_KEY=API_KEY) == test_update_pkg_fixture  # noqa: E501
+    assert update_pkg.main(base_url=BASE_URL, api_key=API_KEY) == test_update_pkg_fixture  # noqa: E501
 
 
 def test_dbo_update_sql_job(mocker, test_dbo_update_sql_job_fixture, test_sql_job_fixture):  # noqa: E501
@@ -286,13 +287,13 @@ def test_dbo_update_sql_job(mocker, test_dbo_update_sql_job_fixture, test_sql_jo
     mocker.patch("requests.Session.post", new=mock_response(test_sql_job_fixture))  # noqa: E501
     mocker.patch("requests.Session.patch", new=mock_response(test_dbo_update_sql_job_fixture))  # noqa: E501
     dbo = "postrgesql://localhost/fake"
-    assert dbo_update_sql_job.main(BASE_URL=BASE_URL, API_KEY=API_KEY, DBO=dbo) == test_dbo_update_sql_job_fixture  # noqa: E501
+    assert dbo_update_sql_job.main(base_url=BASE_URL, api_key=API_KEY, dbo=dbo) == test_dbo_update_sql_job_fixture  # noqa: E501
 
 
 def test_delete_job(mocker, test_delete_job_fixture):
     """testing delete_job.py"""
     mocker.patch("requests.Session.delete", new=_request_delete())
-    assert delete_job.main(BASE_URL=BASE_URL, API_KEY=API_KEY) == test_delete_job_fixture  # noqa: E501
+    assert delete_job.main(base_url=BASE_URL, api_key=API_KEY) == test_delete_job_fixture  # noqa: E501
 
 
 def test_delete_webhook(mocker, test_delete_job_webhook_fixture, test_io_job_fixture, test_create_job_webhook_fixture):  # noqa: E501
@@ -300,13 +301,13 @@ def test_delete_webhook(mocker, test_delete_job_webhook_fixture, test_io_job_fix
     mocker.patch("requests.Session.post", new=mock_response(test_io_job_fixture))  # noqa: E501
     mocker.patch("requests.Session.post", new=mock_response(test_create_job_webhook_fixture))  # noqa: E501
     mocker.patch("requests.Session.delete", new=_request_delete())  # noqa: E501
-    assert delete_webhook.main(BASE_URL=BASE_URL, API_KEY=API_KEY) == test_delete_job_webhook_fixture  # noqa: E501
+    assert delete_webhook.main(base_url=BASE_URL, api_key=API_KEY) == test_delete_job_webhook_fixture  # noqa: E501
 
 
 def test_update_a_webhook(mocker, test_get_webhooks_fixture, test_update_a_webhook_fixture):  # noqa: E501
     """testing update_a_webhook.py"""
     mocker.patch("requests.Session.get", new=mock_response(test_get_webhooks_fixture))  # noqa: E501
     mocker.patch("requests.Session.put", new=mock_response(test_update_a_webhook_fixture))  # noqa: E501
-    WEBHOOK = "https://fakehook.com"
-    OLD_WEBHOOK = "https://oldhook.com"
-    assert update_a_webhook.main(BASE_URL=BASE_URL, API_KEY=API_KEY, WEBHOOK=WEBHOOK, OLD_WEBHOOK=OLD_WEBHOOK) == [test_update_a_webhook_fixture]  # noqa: E501
+    webhook = "https://fakehook.com"
+    old_webhook = "https://oldhook.com"
+    assert update_a_webhook.main(base_url=BASE_URL, api_key=API_KEY, webhook=webhook, old_webhook=old_webhook) == [test_update_a_webhook_fixture]  # noqa: E501

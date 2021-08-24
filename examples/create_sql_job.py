@@ -31,7 +31,7 @@ SQL_JOB = {
 }
 
 
-def main(SQL_JOB):
+def main(sql_job=SQL_JOB):
     """
     Request to API with current configurations.
     """
@@ -40,9 +40,9 @@ def main(SQL_JOB):
         api_key=API_KEY
     )
 
-    created_job = mitto.create_job(job=SQL_JOB)
+    created_job = mitto.create_job(job=sql_job)
     return created_job
 
 
 if __name__ == "__main__":
-    sys.exit(main(SQL_JOB))
+    sys.exit(main(sql_job=SQL_JOB))

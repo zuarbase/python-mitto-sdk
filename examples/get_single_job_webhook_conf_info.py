@@ -22,17 +22,17 @@ WEBHOOK = {
 }
 
 
-def main(BASE_URL, API_KEY):
+def main(base_url=BASE_URL, api_key=API_KEY, webhook=WEBHOOK):
     """getting webhook configuration info"""
     mitto = Mitto(
         base_url=BASE_URL,
         api_key=API_KEY
     )
-    webhook = created_job_webhook(WEBHOOK=WEBHOOK)
+    webhook = created_job_webhook(webhook=webhook)
     job_id = webhook["id"]
     single_webhook = mitto.get_job_webhooks(job_id=job_id)
     return single_webhook
 
 
 if __name__ == "__main__":
-    sys.exit(main(BASE_URL, API_KEY))
+    sys.exit(main(base_url=BASE_URL, api_key=API_KEY, webhook=WEBHOOK))

@@ -19,32 +19,32 @@ TITLE = f"[SQL]{UUID}"
 TYPE = "sql"
 BASE_URL = os.getenv("MITTO_BASE_URL")
 API_KEY = os.getenv("MITTO_API_KEY")
-JOB = {
-  "name": NAME,
-  "title": TITLE,
-  "type": TYPE,
-  "schedule": {
-      "value": "daily",
-      "type": "daily",
-      "daily": {
-          "minute": 0,
-          "hour": 12,
-          "ampm": "AM"
-      },
-      "hourly": None,
-      "custom": None
-  },
-  "conf": {
-    "dbo": "postgresql://localhost/analytics",
-    "credentials": None,
-    "sql": "select 1",
-    "parameters": {},
-    "kwargs": {},
-    "transaction": True,
-    "split": False
-  }
-}
 
+JOB = {
+    "name": NAME,
+    "title": TITLE,
+    "type": TYPE,
+    "schedule": {
+        "value": "daily",
+        "type": "daily",
+        "daily": {
+            "minute": 0,
+            "hour": 12,
+            "ampm": "AM"
+        },
+        "hourly": None,
+        "custom": None
+    },
+    "conf": {
+        "dbo": "postgresql://localhost/analytics",
+        "credentials": None,
+        "sql": "select 1",
+        "parameters": {},
+        "kwargs": {},
+        "transaction": True,
+        "split": False
+    }
+}
 
 WEBHOOK = {
     "url": "https://webhook.site/83d6607a-0118-478d-a68c-cf2ab4645314",
@@ -56,17 +56,17 @@ WEBHOOK = {
 }
 
 
-def main(WEBHOOK):
+def main(webhook=WEBHOOK, job=JOB):
     """creating webhook"""
     mitto = Mitto(
         base_url=BASE_URL,
         api_key=API_KEY
     )
-    job = created_job(JOB=JOB)
+    job = created_job(job=job)
     job_id = job["id"]
-    job_webhook = mitto.create_job_webhook(job_id=job_id, job_hook=WEBHOOK)
+    job_webhook = mitto.create_job_webhook(job_id=job_id, job_hook=webhook)
     return job_webhook
 
 
 if __name__ == "__main__":
-    sys.exit(main(WEBHOOK))
+    sys.exit(main(webhook=WEBHOOK, job=JOB))

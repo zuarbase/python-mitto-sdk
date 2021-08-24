@@ -22,7 +22,7 @@ WEBHOOK = {
 }
 
 
-def main(BASE_URL, API_KEY):
+def main(base_url=BASE_URL, api_key=API_KEY, webhook=WEBHOOK):
     """
     Request to API with current configurations.
     """
@@ -30,7 +30,7 @@ def main(BASE_URL, API_KEY):
         base_url=BASE_URL,
         api_key=API_KEY
     )
-    webhook = created_webhook(WEBHOOK)
+    webhook = created_webhook(webhook=webhook)
     webhook_id = webhook["id"]
     deleted_webhook = mitto.delete_webhook(webhook_id=webhook_id)
     print(f'{webhook}\n If you see Response[204]',
@@ -39,4 +39,4 @@ def main(BASE_URL, API_KEY):
 
 
 if __name__ == "__main__":
-    sys.exit(main(BASE_URL, API_KEY))
+    sys.exit(main(base_url=BASE_URL, api_key=API_KEY, webhook=WEBHOOK))

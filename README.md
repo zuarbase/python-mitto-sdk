@@ -32,7 +32,7 @@ print(version)
 ## dev notes
 ## Creating .env file with your $MITTO_BASE_URL and $MITTO_API_KEY:
 ```python
-cd /path/to/your/python-mitto-sdk/examples && echo "MITTO_BASE_URL=https://your-mitto.zuarbase.net">.env && echo "MITTO_API_KEY=<YOUR_API_KEY>">>.env
+cd /path/to/your/python-mitto-sdk && echo "MITTO_BASE_URL=https://your-mitto.zuarbase.net">.env && echo "MITTO_API_KEY=<YOUR_API_KEY>">>.env
 ```
 
 
@@ -46,5 +46,5 @@ source pyenv/bin/activate
 
 ## Changing path to examples dir for testing python-mitto-sdk package:
 ```python
-export PYTHONPATH=../../python-mitto-sdk/examples/
+export PYTHONPATH=/path-to-dir/python-mitto-sdk:/path-to-dir/python-mitto-sdk/examples/
 ```

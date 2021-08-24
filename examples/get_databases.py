@@ -13,7 +13,7 @@ BASE_URL = os.getenv("MITTO_BASE_URL")
 API_KEY = os.getenv("MITTO_API_KEY")
 
 
-def main(BASE_URL, API_KEY):
+def main(base_url=BASE_URL, api_key=API_KEY):
     """getting databases"""
     mitto = Mitto(
         base_url=BASE_URL,
@@ -24,4 +24,4 @@ def main(BASE_URL, API_KEY):
 
 
 if __name__ == "__main__":
-    sys.exit(main(BASE_URL, API_KEY))
+    sys.exit(main(base_url=BASE_URL, api_key=API_KEY))

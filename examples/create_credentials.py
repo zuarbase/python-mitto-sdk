@@ -24,16 +24,16 @@ NEW_CREDS = {
 }
 
 
-def main(NEW_CREDS):
+def main(new_creds=NEW_CREDS):
     """creating credentials"""
     mitto = Mitto(
         base_url=BASE_URL,
         api_key=API_KEY
     )
 
-    create_creds = mitto.create_credentials(creds=NEW_CREDS)
+    create_creds = mitto.create_credentials(creds=new_creds)
     return create_creds
 
 
 if __name__ == "__main__":
-    sys.exit(main(NEW_CREDS))
+    sys.exit(main(new_creds=NEW_CREDS))

@@ -26,16 +26,16 @@ JOB = {
 }
 
 
-def main(JOB):
+def main(job=JOB):
     """creating CMD job"""
     mitto = Mitto(
         base_url=BASE_URL,
         api_key=API_KEY
     )
 
-    job = mitto.create_job(job=JOB)
+    job = mitto.create_job(job=job)
     return job
 
 
 if __name__ == "__main__":
-    sys.exit(main(JOB))
+    sys.exit(main(job=JOB))

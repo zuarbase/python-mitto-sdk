@@ -23,16 +23,16 @@ TAG = {
 }
 
 
-def main(BASE_URL, API_KEY):
+def main(base_url=BASE_URL, api_key=API_KEY, tag=TAG):
     """getting tags"""
     mitto = Mitto(
         base_url=BASE_URL,
         api_key=API_KEY
     )
-    create_tag = created_tag(TAG=TAG)  # noqa: F841# pylint: disable=W0612
+    create_tag = created_tag(tag=tag)  # noqa: F841# pylint: disable=W0612
     tags = mitto.get_tags()
     return tags
 
 
 if __name__ == "__main__":
-    sys.exit(main(BASE_URL, API_KEY))
+    sys.exit(main(base_url=BASE_URL, api_key=API_KEY, tag=TAG))

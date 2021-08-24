@@ -46,17 +46,17 @@ JOB = {
 }
 
 
-def main(BASE_URL, API_KEY):
+def main(base_url=BASE_URL, api_key=API_KEY, job=JOB):
     """start job"""
     mitto = Mitto(
         base_url=BASE_URL,
         api_key=API_KEY
     )
-    job = created_job(JOB=JOB)
+    job = created_job(job=job)
     job_id = job["id"]
     response = mitto.start_job(job_id=job_id)
     return response
 
 
 if __name__ == "__main__":
-    sys.exit(main(BASE_URL, API_KEY))
+    sys.exit(main(base_url=BASE_URL, api_key=API_KEY, job=JOB))

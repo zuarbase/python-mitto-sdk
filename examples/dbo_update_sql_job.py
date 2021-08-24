@@ -52,20 +52,20 @@ INPUT_DBO = "postgres"
 JOB_TYPE = "sql"
 
 
-def main(BASE_URL, API_KEY, DBO):
+def main(base_url=BASE_URL, api_key=API_KEY, dbo=DBO, input_dbo=INPUT_DBO, job_type=JOB_TYPE, job=JOB):  # noqa: E501
     """dbo updating"""
     mitto = Mitto(
          base_url=BASE_URL,
          api_key=API_KEY
     )
-    job = created_job(SQL_JOB=JOB)
+    job = created_job(sql_job=job)
     job_id = job["id"]
     conf = hjson.loads(job["conf"])
-    conf["dbo"] = DBO
+    conf["dbo"] = dbo
     job["conf"] = conf
     update_conf_dbo = mitto.update_job_conf(job_id=job_id, job_conf=conf)
     return update_conf_dbo
 
 
 if __name__ == "__main__":
-    sys.exit(main(BASE_URL, API_KEY, DBO))
+    sys.exit(main(base_url=BASE_URL, api_key=API_KEY, dbo=DBO, input_dbo=INPUT_DBO, job_type=JOB_TYPE, job=JOB))  # noqa: E501

@@ -44,18 +44,18 @@ JOB = {
 }
 
 
-def main(BASE_URL, API_KEY):
+def main(base_url=BASE_URL, api_key=API_KEY, job=JOB):
     """show matching jobs"""
     mitto = Mitto(
         base_url=BASE_URL,
         api_key=API_KEY
     )
-    create_job = created_job(JOB=JOB)
+    create_job = created_job(job=job)
     job_id = create_job['id']
-    job = mitto.get_job(job_id=job_id)
-    conf = job['conf']  # noqa: F841
+    s_job = mitto.get_job(job_id=job_id)
+    conf = s_job['conf']  # noqa: F841
     return conf
 
 
 if __name__ == "__main__":
-    sys.exit(main(BASE_URL, API_KEY))
+    sys.exit(main(base_url=BASE_URL, api_key=API_KEY, job=JOB))

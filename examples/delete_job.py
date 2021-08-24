@@ -46,7 +46,7 @@ JOB = {
 }
 
 
-def main(BASE_URL, API_KEY):
+def main(base_url=BASE_URL, api_key=API_KEY, job=JOB):
     """
     Request to API with current configurations.
     """
@@ -54,7 +54,7 @@ def main(BASE_URL, API_KEY):
         base_url=BASE_URL,
         api_key=API_KEY
     )
-    job = created_job(JOB=JOB)
+    job = created_job(job=job)
     job_id = job["id"]
     deleted_job = mitto.delete_job(job_id=job_id)
     print(f'{deleted_job}\n If you see <Response [204]> message',
@@ -63,4 +63,4 @@ def main(BASE_URL, API_KEY):
 
 
 if __name__ == "__main__":
-    sys.exit(main(BASE_URL, API_KEY))
+    sys.exit(main(base_url=BASE_URL, api_key=API_KEY, job=JOB))

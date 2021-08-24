@@ -46,16 +46,16 @@ JOB = {
 }
 
 
-def main(BASE_URL, API_KEY):
+def main(base_url=BASE_URL, api_key=API_KEY, job=JOB):
     """getting all jobs"""
     mitto = Mitto(
         base_url=BASE_URL,
         api_key=API_KEY
     )
-    job = created_job(JOB=JOB)  # noqa: F841#pylint: disable=W0612
+    job = created_job(job=job)  # noqa: F841#pylint: disable=W0612
     jobs = mitto.get_jobs()
     return jobs
 
 
 if __name__ == "__main__":
-    sys.exit(main(BASE_URL, API_KEY))
+    sys.exit(main(base_url=BASE_URL, api_key=API_KEY, job=JOB))

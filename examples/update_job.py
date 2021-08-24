@@ -130,9 +130,9 @@ UPDATE_JOB = {
 }
 
 
-def main(BASE_URL, API_KEY, UPDATE_JOB):
+def main(base_url=BASE_URL, api_key=API_KEY, update_job=UPDATE_JOB, job=JOB):
     """updating job"""
-    job = created_job(JOB=JOB)
+    job = created_job(job=job)
     print(job)
     job_id = job["id"]
 
@@ -140,9 +140,9 @@ def main(BASE_URL, API_KEY, UPDATE_JOB):
         base_url=BASE_URL,
         api_key=API_KEY
     )
-    update_job = mitto.update_job(job_id=job_id, update_job_body=UPDATE_JOB)
+    update_job = mitto.update_job(job_id=job_id, update_job_body=update_job)
     return update_job
 
 
 if __name__ == "__main__":
-    sys.exit(main(BASE_URL, API_KEY, UPDATE_JOB))
+    sys.exit(main(base_url=BASE_URL, api_key=API_KEY, update_job=UPDATE_JOB))

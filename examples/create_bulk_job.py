@@ -43,7 +43,7 @@ BULK_JOB = [
 ]
 
 
-def main(BULK_JOB):
+def main(bulk_job_s=BULK_JOB):
     """
     Request to API with current configurations.
     """
@@ -51,9 +51,9 @@ def main(BULK_JOB):
         base_url=BASE_URL,
         api_key=API_KEY
     )
-    bulk_job = mitto.create_bulk_jobs(bulk_job=BULK_JOB)
+    bulk_job = mitto.create_bulk_jobs(bulk_job=bulk_job_s)
     return bulk_job
 
 
 if __name__ == "__main__":
-    sys.exit(main(BULK_JOB))
+    sys.exit(main(bulk_job_s=BULK_JOB))

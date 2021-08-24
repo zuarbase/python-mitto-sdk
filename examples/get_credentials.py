@@ -26,16 +26,16 @@ NEW_CREDS = {
 }
 
 
-def main(BASE_URL, API_KEY):
+def main(base_url=BASE_URL, api_key=API_KEY, new_creds=NEW_CREDS):  # noqa: E501
     """getting creds"""
     mitto = Mitto(
         base_url=BASE_URL,
         api_key=API_KEY
     )
-    created_creds = created_credentials(NEW_CREDS=NEW_CREDS)  # noqa: F841, E501# pylint: disable=W0612
+    created_creds = created_credentials(new_creds=new_creds)  # noqa: F841, E501# pylint: disable=W0612
     creds = mitto.get_credentials()
     return creds
 
 
 if __name__ == "__main__":
-    sys.exit(main(BASE_URL, API_KEY))
+    sys.exit(main(base_url=BASE_URL, api_key=API_KEY, new_creds=NEW_CREDS))

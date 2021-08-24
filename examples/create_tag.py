@@ -20,16 +20,16 @@ TAG = {
 }
 
 
-def main(TAG):
+def main(tag=TAG):
     """creating tag"""
     mitto = Mitto(
         base_url=BASE_URL,
         api_key=API_KEY
     )
 
-    create_tag = mitto.create_tags(tags=TAG)
+    create_tag = mitto.create_tags(tags=tag)
     return create_tag
 
 
 if __name__ == "__main__":
-    sys.exit(main(TAG))
+    sys.exit(main(tag=TAG))

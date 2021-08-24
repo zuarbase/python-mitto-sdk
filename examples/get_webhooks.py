@@ -21,16 +21,16 @@ WEBHOOK = {
 }
 
 
-def main(BASE_URL, API_KEY):
+def main(base_url=BASE_URL, api_key=API_KEY, webhook=WEBHOOK):
     """getting webhooks"""
     mitto = Mitto(
         base_url=BASE_URL,
         api_key=API_KEY
     )
-    create_job_webhook = created_webhook(WEBHOOK=WEBHOOK)  # noqa: F841, E501# pylint: disable=W0612
+    create_job_webhook = created_webhook(webhook=webhook)  # noqa: F841, E501# pylint: disable=W0612
     webhooks = mitto.get_webhooks()
     return webhooks
 
 
 if __name__ == "__main__":
-    sys.exit(main(BASE_URL, API_KEY))
+    sys.exit(main(base_url=BASE_URL, api_key=API_KEY, webhook=WEBHOOK))
