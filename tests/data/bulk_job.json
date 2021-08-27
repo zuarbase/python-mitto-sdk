@@ -1,1 +1,37 @@
-[{"id": 166, "name": "bulk_433c668c_f12e_42b4_a240_f99d59a21548", "title": "[BULK]433c668c-f12e-42b4-a240-f99d59a21548", "type": "bulk", "markdown": "string", "schedule": {"type": "daily", "daily": {"minute": 0, "hour": 12, "ampm": "AM"}, "hourly": null, "endof": null, "custom": null, "value": "0 0 * * *"}, "timeout": 0, "notify": 0, "delay": 0, "continue_on_error": true, "concurrency": 0, "created_at": "2021-08-02T16:06:38.441128+00:00", "updated_at": "2021-08-02T16:06:38.439485+00:00", "status": null, "tags": [], "conf": "{}", "jobs": []}]
+[{
+  "status": {
+    "success": 1,
+    "failure": 0,
+    "error": "None"
+  },
+  "results":[{
+    "id": 1056,
+    "name": "bulk_7a8d0839_a1fb_4e75_8788_a921857fea55",
+    "title": "[BULK]7a8d0839-a1fb-4e75-8788-a921857fea55",
+    "type": "bulk",
+    "markdown": "string",
+    "schedule": {
+      "type": "daily",
+      "daily": {
+        "minute": 0,
+        "hour": 12,
+        "ampm": "AM"
+      },
+      "hourly": "None",
+      "endof": "None",
+      "custom": "None",
+      "value": "0 0 * * *"
+    },
+    "timeout": 0,
+    "notify": 0,
+    "delay": 0,
+    "continue_on_error": "True",
+    "concurrency": 0,
+    "created_at": "2021-08-26T16:25:20.265108+00:00",
+    "updated_at": "2021-08-26T16:25:20.263888+00:00",
+    "status": "None",
+    "tags": [],
+    "conf": "{}",
+    "jobs": []
+  }]
+}]

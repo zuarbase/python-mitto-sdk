@@ -52,8 +52,7 @@ def main(base_url=BASE_URL, api_key=API_KEY, bulk_job=BULK_JOB):  # noqa: E501
         api_key=API_KEY
     )
     create_bulk_job = created_bulk_job(bulk_job_s=bulk_job)
-    results = create_bulk_job["results"]
-    jobs = mitto.get_bulk_jobs(results)
+    jobs = mitto.get_bulk_jobs(create_bulk_job)
     return jobs
 
 

@@ -30,7 +30,6 @@ def main(new_creds=NEW_CREDS):
         base_url=BASE_URL,
         api_key=API_KEY
     )
-
     create_creds = mitto.create_credentials(creds=new_creds)
     return create_creds
 

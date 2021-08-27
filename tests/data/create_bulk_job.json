@@ -1,43 +1,38 @@
-[
-  {
-    "name": "string",
-    "title": "string",
-    "type": "string",
+{
+  "status": {
+    "success": 1,
+    "failure": 0,
+    "error": "None"
+  },
+  "results":[{
+    "id": 1056,
+    "name": "bulk_7a8d0839_a1fb_4e75_8788_a921857fea55",
+    "title": "[BULK]7a8d0839-a1fb-4e75-8788-a921857fea55",
+    "type": "bulk",
     "markdown": "string",
     "schedule": {
       "type": "daily",
       "daily": {
-        "minute": 59,
+        "minute": 0,
         "hour": 12,
         "ampm": "AM"
       },
-      "hourly": {
-        "minute": 59
-      },
-      "endof": "month",
-      "custom": "string"
+      "hourly": "None",
+      "endof": "None",
+      "custom": "None",
+      "value": "0 0 * * *"
     },
     "timeout": 0,
     "notify": 0,
     "delay": 0,
-    "continue_on_error": true,
+    "continue_on_error": "True",
     "concurrency": 0,
-    "conf": "string",
-    "tags": [
-      "string"
-    ],
-    "jobs": [
-      {
-        "id": 0,
-        "enabled": true
-      }
-    ],
-    "input": {},
-    "output": {},
-    "sdl": {},
-    "steps": [
-      "string"
-    ],
-    "store": {}
-  }
-]
+    "created_at": "2021-08-26T16:25:20.265108+00:00",
+    "updated_at": "2021-08-26T16:25:20.263888+00:00",
+    "status": "None",
+    "tags": [],
+    "conf": "{}",
+    "jobs": []
+  }]
+}
+

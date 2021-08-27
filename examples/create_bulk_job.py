@@ -18,8 +18,7 @@ NAME = f"bulk_{UUID}".replace("-", "_")
 TITLE = f"[BULK]{UUID}"
 TYPE = "bulk"
 
-BULK_JOB = [
-  {
+BULK_JOB = [{
     "name": NAME,
     "title": TITLE,
     "type": TYPE,
@@ -39,8 +38,7 @@ BULK_JOB = [
     "delay": 0,
     "continue_on_error": True,
     "concurrency": 0
-  }
-]
+  }]
 
 
 def main(bulk_job_s=BULK_JOB):

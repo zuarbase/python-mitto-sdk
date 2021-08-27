@@ -1,3 +1,4 @@
+pip==21.2.4
 pylint==2.6.0
 flake8==3.8.4
 addict==2.4.0

@@ -12,6 +12,14 @@ def test_bulk_job_fixture():
 
 
 @pytest.fixture(scope="session")
+def test_create_bulk_job_fixture():
+    path = os.path.join(os.path.dirname(__file__), "data", "bulk_job.json")  # noqa: E501
+    f = open(f'{path}', 'r')
+    data = json.load(f)
+    return data
+
+
+@pytest.fixture(scope="session")
 def test_cmd_job_fixture():
     path = os.path.join(os.path.dirname(__file__), "data", "cmd_job.json")  # noqa: E501
     f = open(f'{path}', 'r')
