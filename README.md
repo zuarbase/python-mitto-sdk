@@ -32,7 +32,7 @@ print(version)
 ## dev notes
 ## unset PYTHONPATH before creating the python environment
 ```python
-export PYTHONPATH=
+unset PYTHONPATH
 ```
 
 
