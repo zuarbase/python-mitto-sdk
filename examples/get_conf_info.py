@@ -1,31 +1,61 @@
+"""
+Getting configuration info of existing job in Mitto instance.
+"""
 import sys
 import os
-from mitto_sdk import Mitto
+import uuid
+
 from dotenv import load_dotenv
+from create_job import main as created_job
+from mitto_sdk import Mitto
 
 load_dotenv()
 
+UUID = str(uuid.uuid4())
+NAME = f"sql_{UUID}".replace("-", "_")
+TITLE = f"[SQL]{UUID}"
+TYPE = "sql"
 BASE_URL = os.getenv("MITTO_BASE_URL")
 API_KEY = os.getenv("MITTO_API_KEY")
+JOB = {
+  "name": NAME,
+  "title": TITLE,
+  "type": TYPE,
+  "schedule": {
+      "value": "daily",
+      "type": "daily",
+      "daily": {
+          "minute": 0,
+          "hour": 12,
+          "ampm": "AM"
+      },
+      "hourly": None,
+      "custom": None
+  },
+  "conf": {
+    "dbo": "postgresql://localhost/analytics",
+    "credentials": None,
+    "sql": "select 1",
+    "parameters": {},
+    "kwargs": {},
+    "transaction": True,
+    "split": False
+  }
+}
 
-JOB_TYPE = "io"
-INPUT_DBO_LIKE = "postgresql"
 
-def main():
+def main(base_url=BASE_URL, api_key=API_KEY, job=JOB):
     """show matching jobs"""
     mitto = Mitto(
         base_url=BASE_URL,
         api_key=API_KEY
     )
-    jobs = mitto.get_jobs(job_type=JOB_TYPE)
-    print(f"found jobs that input into {INPUT_DBO_LIKE}:")
-    for job in jobs:
-        job_id = job["id"]
-        job_conf = mitto.get_job(job_id=job_id)
-        conf = job_conf["conf"]
-        if "input" in conf and "dbo" in conf["input"]:
-            if INPUT_DBO_LIKE in conf["input"]["dbo"]:
-                print(f"JOB ID: {job_id} - JOB TITLE: {job['title']}")
+    create_job = created_job(job=job)
+    job_id = create_job['id']
+    s_job = mitto.get_job(job_id=job_id)
+    conf = s_job['conf']  # noqa: F841
+    return conf
+
 
 if __name__ == "__main__":
-    sys.exit(main())
+    sys.exit(main(base_url=BASE_URL, api_key=API_KEY, job=JOB))

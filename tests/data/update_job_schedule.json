@@ -1,0 +1,13 @@
+{
+  "schedule": {
+    "type": "daily",
+    "daily": {
+      "minute": 0,
+      "hour": 11,
+      "ampm": "AM"
+    },
+    "hourly": {
+      "minute": 0
+    }
+  }
+}

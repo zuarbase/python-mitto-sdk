@@ -1,5 +1,6 @@
 # include .env variables
-PACKAGE := src
+PACKAGE := mitto_sdk
+EXAMPLES := examples
 include .env
 export
 
@@ -10,8 +11,8 @@ env:
 	echo $(PYPI_TEST_PASSWORD)
 	echo $(PYPI_PASSWORD)
 .PHONY: env
-
-build: pyenv flake8 pylint test coverage clean
+all: flake8 pylint
+build: pyenv flake8 pylint test clean
 	python3 setup.py sdist bdist_wheel
 .PHONY: build
 
@@ -39,19 +40,28 @@ version:
 .PHONY: version_patch
 
 flake8:
-	flake8 $(PACKAGE) tests
+	flake8 $(PACKAGE) $(EXAMPLES) tests
 .PHONY: flake8
 
-pylint: pylint_pkg pylint_tests
+pylint: pylint_pkg pylint_examp pylint_tests pylint_examples
 .PHONY: pylint
 
 pylint_pkg:
 	pylint $(PACKAGE)
 .PHONY: pylint_pkg
 
+pylint_examp:
+	pylint $(EXAMPLES)
+.PHONY: pylint_examp
+
 pylint_tests:
 	pylint tests --disable=missing-docstring,duplicate-code,unused-argument
 .PHONY: pylint_test
+
+pylint_examples:
+	pylint examples --disable=missing-docstring,duplicate-code,unused-argument
+.PHONY: pylint_examples
+
 
 test:
 	pytest -xv tests
@@ -59,6 +69,7 @@ test:
 
 coverage:
 	pytest --cov=$(PACKAGE) --cov-report=term-missing --cov-fail-under=100 tests
+	pytest --cov=$(EXAMPLES) --cov-report=term-missing --cov-fail-under=100 tests
 .PHONY: coverage
 
 freeze:

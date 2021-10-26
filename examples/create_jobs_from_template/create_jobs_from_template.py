@@ -1,3 +1,7 @@
+"""
+Creating jobs from templates.
+"""
+# pylint: disable=R0801
 import os
 import sys
 import json
@@ -34,6 +38,7 @@ MITTO_JOBS = [
 
 
 def main():
+    """creating jobs from template"""
     # set up Jinja
     template_env = Environment(loader=FileSystemLoader(INPUT_DIRECTORY))
     template = template_env.get_template(TEMPLATE_FILE)

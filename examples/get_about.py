@@ -1,3 +1,6 @@
+"""
+Getting information about Mitto instance.
+"""
 import os
 import sys
 
@@ -10,15 +13,17 @@ BASE_URL = os.getenv("MITTO_BASE_URL")
 API_KEY = os.getenv("MITTO_API_KEY")
 
 
-def main():
+def main(base_url=BASE_URL, api_key=API_KEY):
+    """
+    Request to API with current configurations.
+    """
     mitto = Mitto(
         base_url=BASE_URL,
         api_key=API_KEY
     )
     about = mitto.get_about()
-    version = about["version"]
-    print(version)
+    return about
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    sys.exit(main(base_url=BASE_URL, api_key=API_KEY))

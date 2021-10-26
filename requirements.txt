@@ -1,7 +1,5 @@
+pip==21.2.4
 pylint==2.6.0
-pytest==6.2.2    
-pytest-cov==2.11.1   
-pytest-mock==3.5.1
 flake8==3.8.4
 addict==2.4.0
 attrs==20.3.0
@@ -21,3 +19,5 @@ requests==2.25.1
 six==1.15.0
 toml==0.10.2
 urllib3==1.26.3
+python-dotenv==0.15.0
+hjson==3.0.2

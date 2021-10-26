@@ -1,0 +1,10 @@
+{
+  "packages": [
+    {
+      "additionalProp1": "string",
+      "additionalProp2": "string",
+      "additionalProp3": "string"
+    }
+  ],
+  "timestamp": "2021-07-29T14:56:28.091Z"
+}

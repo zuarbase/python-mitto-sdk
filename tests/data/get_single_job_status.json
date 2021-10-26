@@ -1,0 +1,17 @@
+{
+  "id": 156,
+  "name": "plugin_cmd__new_command_job",
+  "title": "New Command Job",
+  "type": "cmd",
+  "status": {
+    "id": 81,
+    "pid": 8870,
+    "returncode": null,
+    "updates": null,
+    "count": null,
+    "error": null,
+    "started_at": "2021-07-29T14:26:52.158552+00:00",
+    "completed_at": null,
+    "kvp": {}
+  }
+}
