@@ -12,19 +12,24 @@ class Mitto:
     def __init__(self, base_url, api_key, verify=True):
         if base_url.endswith("/"):
             self.base_url = base_url[:-1]
-
         else:
             self.base_url = base_url
-        self.api_key = api_key
-        self.api_root = "/api"
-
-        self.verify = verify
 
         # set up the session
         self.session = requests.Session()
-        self.session.params = {
-            "API_KEY": self.api_key
-        }
+
+        # bypass auth if running on localhost
+        if self.base_url.endswith(":7127"):
+            self.api_root = ""
+            self.api_key = ""
+        else:
+            self.api_root = "/api"
+            self.api_key = api_key
+            self.session.params = {
+                "API_KEY": self.api_key
+            }
+
+        self.verify = verify
 
     def page_through_results(self, url, params, limit=50, offset=0):
         """
