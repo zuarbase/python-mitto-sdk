@@ -21,7 +21,7 @@ pyparsing==2.4.7
 requests==2.25.1
 six==1.15.0
 toml==0.10.2
-urllib3==1.26.3
+urllib3==1.26.17
 python-dotenv==0.15.0
 hjson==3.0.2
 python-dotenv==0.15.0
