@@ -15,13 +15,13 @@ with open("README.md", "r") as fh:
 
 setup(
     name="python-mitto-sdk",
-    version="0.0.7",
-    author="Justin Freels",
-    author_email="justin@zuar.com",
+    version="1.0.7",
+    author="Dev",
+    author_email="dev@zuar.com",
     description="Python library to interact with Mitto's API.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/jfreels/python-mitto-sdk",
+    url="https://github.com/zuarbase/python-mitto-sdk",
     packages=find_packages(where="src"),
     package_dir={"": "src"},
     classifiers=[
