@@ -10,16 +10,22 @@ class Mitto:
     Mitto instance
     """
     def __init__(self, base_url, api_key, verify=True):
+        print(base_url)
         if base_url.endswith("/"):
             self.base_url = base_url[:-1]
-
         else:
             self.base_url = base_url
+        
         self.api_key = api_key
-        self.api_root = "/api"
-
+        
+        # Support local API connection from the docker container
+        if "7127" in base_url:
+            self.api_root = "/"
+        else:
+            self.api_root = "/api"
+        
         self.verify = verify
-
+        
         # set up the session
         self.session = requests.Session()
         self.session.params = {
